@@ -13,10 +13,15 @@ from pudb import set_trace
 census_data_file = open("./census_data/train_data.csv")
 census_data = csv.DictReader(census_data_file)
 
+for row in census_data:
+    print("row: {}".format(row))
+    break
+
+
 census_data = list(census_data)
 
 
-# [] ============= CONSTANTS =============
+# ================ CONSTANTS =============
 
 categorical_vars = ['workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'native-country']
 

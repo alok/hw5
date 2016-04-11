@@ -4,6 +4,8 @@
 * custom features
     bag of words
 
+* add preprocessing of data
+
 
 # TODO put data into lists and put
  X ->  [
