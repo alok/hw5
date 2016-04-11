@@ -4,6 +4,7 @@
 class DecisionTree(params):
 
     """A binary tree that takes in
+
     : split rule : (feat to split on (int index of data pt's feat vector), threshold to split on)
     :left: left child of current node
     :right: right child of current node
