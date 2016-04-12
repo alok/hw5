@@ -74,17 +74,12 @@ def process_floats(lst = census_data):
 census_data = fill_in_missing()
 census_data = process_floats()
 
-
-
 # ================ One Hot Encoding =============
 # 'one hot encoding' sounds oddly sensual for programming
 
 v = DictVectorizer()
-vectorized_dict = v.fit_transform(census_data).toarray()
+data = v.fit_transform(census_data).toarray()
 
-data = vectorized_dict
-
-print("data.shape: {}".format(data.shape))
 # ================ Different Fill In Methods =============
 # TODO
 

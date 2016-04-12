@@ -14,7 +14,6 @@ import matplotlib as plt
 import sklearn
 import numpy as np
 
-from inspect import isclass
 
 from pudb import set_trace
 
@@ -31,7 +30,7 @@ def all_equal(iterator):
         return True
 
 
-def train(I=range(len(data)), y=labels):
+def train(I=list(range(len(data))), y=labels):
     Y = [y[i] for i in I]
 
     if all_equal(Y):
