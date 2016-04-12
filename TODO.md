@@ -7,12 +7,14 @@
 * add preprocessing of data
 
 
-# TODO put data into lists and put
- X ->  [
-           [ 25.11, "str1" ],  [11.67, "str2" ] 
-                    ]
- (n,m) where n is number of samples and m is number of features
- TODO map the categorical features to the end of the vector (IN A CONSISTENT
- ORDER)
+## Training a tree
+training:
+data -> labels
+-> Tree
 
-# Y -> [ {0,1} ] (n,1) or (n,)
+## Predicting value given a tree
+predict:
+data -> Tree
+-> labels
+
+*Work with the indices*, *not* with the data directly

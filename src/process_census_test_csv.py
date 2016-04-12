@@ -15,7 +15,7 @@ from pudb import set_trace
 
 # ============= Read in File =============
 
-census_data_file = open("./census_data/train_data.csv")
+census_data_file = open("./census_data/test_data.csv")
 census_data = csv.DictReader(census_data_file)
 
 census_data = list(census_data)
@@ -30,13 +30,6 @@ quant_vars = ['age', 'fnlwgt', 'education-num', 'capital-gain',
               'capital-loss', 'hours-per-week', ]
 
 vars = categorical_vars + quant_vars
-
-# ================ Encode Labels =============
-
-labels = [x.pop('label') for x in census_data]
-labels = [float(y) for y in labels]
-labels = np.array(labels)
-
 
 # ================ Fill in Missing Values =============
 
@@ -75,7 +68,6 @@ census_data = fill_in_missing()
 census_data = process_floats()
 
 
-
 # ================ One Hot Encoding =============
 # 'one hot encoding' sounds oddly sensual for programming
 
@@ -83,28 +75,4 @@ v = DictVectorizer()
 vectorized_dict = v.fit_transform(census_data).toarray()
 
 data = vectorized_dict
-
 print("data.shape: {}".format(data.shape))
-# ================ Different Fill In Methods =============
-# TODO
-
-class Metric():
-
-    """ Different metrics for filling in missing values. """
-
-    def quant(x, y):
-        """
-        metric for quantitative variables, max(x,y) - min (x,y) / (x + y)
-        """
-
-        return ( max(x,y) - min(x,y) ) / (x + y)
-
-
-    def cat(self, x, y):
-        """
-        discrete metric for categorical variables
-        """
-        if x == y:
-            return 0
-        else:
-            return 1
