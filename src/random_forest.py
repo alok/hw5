@@ -14,7 +14,6 @@ from collections import Counter
 from pudb import set_trace
 
 import scipy
-import matplotlib as plt
 import sklearn
 import numpy as np
 
@@ -25,7 +24,7 @@ from decision_tree import *
 class RandomForest(object):
     """ takes in an index set I so using random forest is easy"""
 
-    def __init__(self, I=list(range(len(data))), num_trees=5):
+    def __init__(self, I, num_trees=5, data, labels):
 
         self.n = len(data)
         self.num_trees = num_trees

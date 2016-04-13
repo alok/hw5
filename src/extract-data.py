@@ -11,7 +11,6 @@ import functools
 import itertools
 
 import scipy
-import matplotlib as plt
 import sklearn
 import numpy as np
 from scipy.special import expit

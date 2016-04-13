@@ -4,6 +4,7 @@
 # ============= Imports =============
 
 import math
+import pickle
 import csv
 import scipy
 import sklearn
@@ -80,26 +81,11 @@ census_data = process_floats()
 v = DictVectorizer()
 data = v.fit_transform(census_data).toarray()
 
-# ================ Different Fill In Methods =============
-# TODO
+# ============= Pickle objects =============
 
-class Metric():
+census_train_pickle = open('./pickles/census_train.pickle', 'wb')
 
-    """ Different metrics for filling in missing values. """
+pickle.dump(data, census_train_pickle)
+pickle.dump(labels, census_train_pickle)
 
-    def quant(x, y):
-        """
-        metric for quantitative variables, max(x,y) - min (x,y) / (x + y)
-        """
-
-        return ( max(x,y) - min(x,y) ) / (x + y)
-
-
-    def cat(self, x, y):
-        """
-        discrete metric for categorical variables
-        """
-        if x == y:
-            return 0
-        else:
-            return 1
+census_train_pickle.close()

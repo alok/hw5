@@ -15,8 +15,8 @@ from node import *
 class DecisionTree(object):
     """ takes in an index set I so using random forest is easy"""
 
-    def __init__(self, I):
-        self.root = Node(I, split_rule=segmenter(I))
+    def __init__(self, I, data, labels):
+        self.root = Node(I, split_rule=segmenter(I, data, labels), data = data, labels = labels)
 
     def predict(self, pt):
         return self.root.predict(pt)

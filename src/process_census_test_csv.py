@@ -4,6 +4,7 @@
 # ============= Imports =============
 
 import math
+import pickle
 import csv
 import scipy
 import sklearn
@@ -12,6 +13,7 @@ import numpy as np
 from sklearn.feature_extraction import DictVectorizer
 
 from pudb import set_trace
+from fill_in_missing_census_values import v
 
 # ============= Read in File =============
 
@@ -71,8 +73,12 @@ census_data = process_floats()
 # ================ One Hot Encoding =============
 # 'one hot encoding' sounds oddly sensual for programming
 
-v = DictVectorizer()
-vectorized_dict = v.fit_transform(census_data).toarray()
-
-data = vectorized_dict
+# need to use transform instead of fit_transform because it's already fit to the original mapping
+data = v.transform(census_data).toarray()
 print("data.shape: {}".format(data.shape))
+
+census_test_pickle = open('./pickles/census_test.pickle', 'wb')
+
+pickle.dump(data, census_test_pickle)
+
+census_test_pickle.close()

@@ -14,12 +14,7 @@ import matplotlib as plt
 import sklearn
 import numpy as np
 
-from inspect import isclass
-
 from pudb import set_trace
-
-from fill_in_missing_census_values import data
-from fill_in_missing_census_values import labels
 
 
 def mode(lst):
@@ -29,7 +24,7 @@ def mode(lst):
     return scipy.stats.mode(lst)[0][0]
 
 
-def entropy(I=list(range(len(data)))):
+def entropy(I, data, labels):
     """ Entropy of an index set. """
 
     # alias for readability
@@ -47,3 +42,15 @@ def entropy(I=list(range(len(data)))):
             h[i] = pr * math.log(pr, 2)
 
     return -np.sum(h)
+
+
+def all_equal(iterator):
+    # guard against empty lists
+    if not iterator:
+        return False
+    try:
+        iterator = iter(iterator)
+        first = next(iterator)
+        return all(first == rest for rest in iterator)
+    except StopIteration:
+        return True
