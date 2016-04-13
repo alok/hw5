@@ -47,5 +47,3 @@ def entropy(I=list(range(len(data)))):
             h[i] = pr * math.log(pr, 2)
 
     return -np.sum(h)
-
-print("entropy(): {}".format(entropy()))
