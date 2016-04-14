@@ -67,14 +67,18 @@ def segmenter(I, data, labels, feature_bagging, subspace_bagging):
     n = len(data)
     if feature_bagging:
         d = np.random.choice(d, floor(sqrt(d)))  # sample sqrt of features
+    else:
+        d = list(range(d))
     if subspace_bagging:
         n = np.random.choice(n, floor(n/3))  # sample the sample space
+    else:
+        n = list(range(n))
 
     current_info_gain = float("-inf")
     best_split = None
 
-    for feature in range(d):
-        possible_thresholds = sorted(set([data[i][feature] for i in range(n)]))
+    for feature in d:
+        possible_thresholds = sorted(set([data[i][feature] for i in n]))
 
     # fnlwgt takes ages
         if len(possible_thresholds)  > 1000:

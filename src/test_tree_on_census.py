@@ -40,9 +40,9 @@ census_train_labels = pickle.load(census_train_pickle)
 
 census_test_data   = pickle.load(census_test_pickle)
 
+census_tree_pickle.close()
 census_train_pickle.close()
-census_tree_pickle.close()
-census_tree_pickle.close()
+census_test_pickle.close()
 
 train_predictions = []
 for pt in census_train_data:
