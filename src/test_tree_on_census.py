@@ -49,7 +49,7 @@ for pt in census_train_data:
     train_predictions.append(census_tree.predict(pt))
 train_predictions = [int(i) for i in train_predictions]
 
-print("benchmark error rate: {:10.2f}%".format(100 * benchmark(train_predictions, census_train_labels)[0]))
+print("benchmark error rate: {:10.2%}".format(benchmark(train_predictions, census_train_labels)[0]))
 
 test_predictions = []
 for pt in census_test_data:
